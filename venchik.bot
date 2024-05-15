@@ -43,10 +43,17 @@ async def cmd_start(message: types.Message):
 async def cmd_start(message: types.Message):
     await message.answer("нет")
 
-# Запуск процесса поллинга новых апдейтов
+@dp.message(F.text == "охуел")
+async def cmd_start(message: types.Message):
+    await message.answer("я твои робуксы украду мудила")
+
+@dp.message(F.text == "педик")
+async def cmd_start(message: types.Message):
+    await message.answer("ip 341818294/42.809461,74.591512")
 async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
