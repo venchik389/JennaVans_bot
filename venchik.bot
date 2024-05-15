@@ -1,0 +1,51 @@
+# Код для aiogram
+
+import asyncio
+import logging
+from aiogram import Bot, Dispatcher, types, F
+from aiogram.filters.command import Command
+
+# Включаем логирование, чтобы не пропустить важные сообщения
+logging.basicConfig(level=logging.INFO)
+
+# Объект бота. Вставьте сюда свой токен
+bot = Bot(token="7140780238:AAHZfxa4A6MXTsf-RLkJLv4VD8l4k5qG1Zw")
+
+# Диспетчер
+dp = Dispatcher()
+
+
+# Хэндлер на команду /start
+@dp.message(F.text == "Привет")
+async def cmd_start(message: types.Message):
+    kb = [
+        [types.KeyboardButton(text="сдрыстни")],
+        [types.KeyboardButton(text="леееее как тебя зовут брат?")]
+    ]
+    keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
+    await message.answer("🤙", reply_markup=keyboard)
+
+@dp.message(F.text == "привет")
+async def cmd_start(message: types.Message):
+    kb = [
+        [types.KeyboardButton(text="сдрыстни")],
+        [types.KeyboardButton(text="леееее как тебя зовут брат?")]
+    ]
+    keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
+    await message.answer("🤙", reply_markup=keyboard)
+    
+@dp.message(F.text == "леееее как тебя зовут брат?")
+async def cmd_start(message: types.Message):
+    await message.answer("тыква запечённая в медном бычке 1488")
+
+@dp.message(F.text == "сдрыстни")
+async def cmd_start(message: types.Message):
+    await message.answer("нет")
+
+# Запуск процесса поллинга новых апдейтов
+async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
