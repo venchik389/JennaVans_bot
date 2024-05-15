@@ -1,55 +1,34 @@
 # Код для aiogram
 #venv\Scripts\python main.py
-
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters.command import Command
-
 # Включаем логирование, чтобы не пропустить важные сообщения
 logging.basicConfig(level=logging.INFO)
-
 # Объект бота. Вставьте сюда свой токен
 bot = Bot(token="7140780238:AAHZfxa4A6MXTsf-RLkJLv4VD8l4k5qG1Zw")
-
 # Диспетчер
 dp = Dispatcher()
-
-
 # Хэндлер на команду /start
-@dp.message(F.text == "Привет")
-async def cmd_start(message: types.Message):
-    kb = [
-        [types.KeyboardButton(text="сдрыстни")],
-        [types.KeyboardButton(text="леееее как тебя зовут брат?")]
-    ]
-    keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
-    await message.answer("🤙", reply_markup=keyboard)
 
 @dp.message(F.text == "привет")
 async def cmd_start(message: types.Message):
     kb = [
-        [types.KeyboardButton(text="сдрыстни")],
-        [types.KeyboardButton(text="леееее как тебя зовут брат?")]
+        [types.KeyboardButton(text="Xiaomi 14 5G Dual SIM 512GB 12GB RAM White")],
+        [types.KeyboardButton(text="Xiaomi 13T Pro 5G Dual SIM 512GB 12GB RAM Blue")]
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
     await message.answer("🤙", reply_markup=keyboard)
-    
-@dp.message(F.text == "леееее как тебя зовут брат?")
-async def cmd_start(message: types.Message):
-    await message.answer("тыква запечённая в медном бычке 1488")
 
-@dp.message(F.text == "сдрыстни")
+# Запуск процесса поллинга новых апдейтов
+@dp.message(F.text == "Xiaomi 14 5G Dual SIM 512GB 12GB RAM White")
 async def cmd_start(message: types.Message):
-    await message.answer("нет")
+    await message.answer("https://images.mobileshop.eu/1708942866/product-large/xiaomi-14-5g-dual-sim-512gb-12gb-ram-white.jpg")
 
-@dp.message(F.text == "охуел")
+@dp.message(F.text == "Xiaomi 13T Pro 5G Dual SIM 512GB 12GB RAM Blue")
 async def cmd_start(message: types.Message):
-    await message.answer("я твои робуксы украду мудила")
-
-@dp.message(F.text == "педик")
-async def cmd_start(message: types.Message):
-    await message.answer("ip 341818294/42.809461,74.591512")
+    await message.answer("https://images.mobileshop.eu/1697200604/product-large/xiaomi-13t-pro-5g-dual-sim-512gb-12gb-ram-blue.jpg")
 async def main():
     await dp.start_polling(bot)
 
